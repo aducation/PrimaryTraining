@@ -265,14 +265,14 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             showToast("密码不能少于6位");
             return;
         }
-        if(TextUtils.isEmpty(mTvQua.getText().toString().trim())){
+        /*if(TextUtils.isEmpty(mTvQua.getText().toString().trim())){
             showToast("请输入资格证号");
             return;
         }
         if(TextUtils.isEmpty(mTvQua.getText().toString().trim())){
             showToast("请输入资格证号");
             return;
-        }
+        }*/
         Map<String, RequestBody> map = new HashMap<>();
         //头像
         RequestBody requestBody = RequestBody.create(MediaType.parse("image/jpeg"), file);
@@ -299,7 +299,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         map.put("persontype", bodyType);
 
         //资格证号
-        RequestBody bodyZyzgzh = RequestBody.create(MediaType.parse("text/plain"), mTvQua.getText().toString().trim());
+        RequestBody bodyZyzgzh = RequestBody.create(MediaType.parse("text/plain"), "000000"/*mTvQua.getText().toString().trim()*/);
         map.put("cyzgzh", bodyZyzgzh);
 
         //区域-市
@@ -313,12 +313,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         map.put("area", body_area);
 
         //证件初领日期
-        RequestBody bodyCyzg_fzrq = RequestBody.create(MediaType.parse("text/plain"), mTvTime.getText().toString().trim());
+        RequestBody bodyCyzg_fzrq = RequestBody.create(MediaType.parse("text/plain"), "000000"/*mTvTime.getText().toString().trim()*/);
         map.put("cyzg_fzrq", bodyCyzg_fzrq);
 
         //学习周期
         AdapterVO cycleVO = (AdapterVO) mSpinnerCycle.getSelectedItem();
-        RequestBody bodyCycle = RequestBody.create(MediaType.parse("text/plain"), cycleVO.getCode());
+        RequestBody bodyCycle = RequestBody.create(MediaType.parse("text/plain"), "000"/*cycleVO.getCode()*/);
         map.put("cycle", bodyCycle);
 
         RetrofitUtil.getInstance().create(HttpService.class).register(map).subscribeOn(io()).observeOn(mainThread()).subscribe(new Subscriber<BaseResult>() {
