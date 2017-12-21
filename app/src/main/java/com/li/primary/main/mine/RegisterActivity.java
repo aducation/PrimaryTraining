@@ -318,7 +318,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
         //学习周期
         AdapterVO cycleVO = (AdapterVO) mSpinnerCycle.getSelectedItem();
-        RequestBody bodyCycle = RequestBody.create(MediaType.parse("text/plain"), "000"/*cycleVO.getCode()*/);
+        RequestBody bodyCycle = RequestBody.create(MediaType.parse("text/plain"), "3"/*cycleVO.getCode()*/);
         map.put("cycle", bodyCycle);
 
         RetrofitUtil.getInstance().create(HttpService.class).register(map).subscribeOn(io()).observeOn(mainThread()).subscribe(new Subscriber<BaseResult>() {

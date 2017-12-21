@@ -91,7 +91,10 @@ public class ChapterAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         @Override
         public void onClick(View v) {
             int position = (int) v.getTag();
-
+            if (data.get(position).getPic() == null) {
+                Toast.makeText(mActivity, "无此视频，请检查服务器", Toast.LENGTH_LONG).show();
+                return;
+            }
             if (data.get(position).getFinished().equals("Y")) {
                 Toast.makeText(mActivity, "视频已学完", Toast.LENGTH_LONG).show();
                 return;
